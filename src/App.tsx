@@ -1,25 +1,25 @@
+import { request } from 'http';
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import OData from 'react-odata';
 
 function App() {
+  const baseUrl = 'http://services.odata.org/V4/TripPinService/People';
+  const query = { filter: { FirstName: 'Russell' } };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <OData baseUrl={baseUrl} query={query} options={{ mode: 'no-cors' }}>
+      {({ loading, error, data }: { loading: any; error: any; data: any }) => (
+        <div>
+          {loading && <span>Loading...</span>}
+          {data &&
+            data.value.map((d: any, i: any) => (
+              <div key={i} id={i}>
+                {d}
+              </div>
+            ))}
+        </div>
+      )}
+    </OData>
   );
 }
 
