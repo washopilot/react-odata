@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Fetch from 'react-fetch-component';
 import OData from 'react-odata';
 
 const baseUrl = 'http://services.odata.org/V4/TripPinService/People';
@@ -11,20 +10,11 @@ export default class App extends Component {
       <div>
         <h1>Basic</h1>
         <OData baseUrl={baseUrl} query={query}>
-          {({ loading, data, error }: { loading: any; data: any; error: any }) => (
-            <div>
-              {loading && <span>Loading... </span>}
-              {data &&
-                data.value.map((d: any, i: any) => (
-                  <div key={i} id={i}>
-                    {d.FirstName}
-                  </div>
-                ))}
-            </div>
-          )}
+          {({ loading, data, error }: { loading: any; data: any; error: any }) =>
+            console.log(loading, data, error)
+          }
         </OData>
       </div>
     );
   }
-
 }
