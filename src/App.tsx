@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import OData from 'react-odata';
 import { Grid, GridColumn } from '@progress/kendo-react-grid';
 
-const baseUrl = 'http://services.odata.org/V4/TripPinService/People';
+const baseUrl = 'https://services.odata.org/V4/TripPinService/People';
 const query = { filter: { FirstName: 'Russell' } };
 const people_mock = [
   { FirstName: 'Jorge', LastName: 'Carrión', Gender: 'Hombre' },
